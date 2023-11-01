@@ -1,10 +1,11 @@
-import { ApplyOptions, RequiresClientPermissions, RequiresDMContext, RequiresGuildContext } from '@sapphire/decorators';
+```ts
+import { ApplyOptions } from '@sapphire/decorators';
 import { send } from '@sapphire/plugin-editable-commands';
 import { Subcommand } from '@sapphire/plugin-subcommands';
-import { EmbedBuilder, PermissionFlagsBits, type Message } from 'discord.js';
+import type { Message } from 'discord.js';
 
 @ApplyOptions<Subcommand.Options>({
-	aliases: ['cwd'],
+	aliases: ['cws'],
 	description: 'A basic command with some subcommands',
 	subcommands: [
 		{
@@ -36,24 +37,16 @@ export class UserCommand extends Subcommand {
 		return send(message, 'Showing!');
 	}
 
-	@RequiresClientPermissions([PermissionFlagsBits.EmbedLinks]) // This sub-command requires the bot to have EMBED_LINKS permission because it sends a EmbedBuilder
 	public async messageAdd(message: Message) {
-		const embed = new EmbedBuilder() //
-			.setColor('#3986E4')
-			.setDescription('Added!')
-			.setTitle('Configuration Log')
-			.setTimestamp();
-
-		return send(message, { embeds: [embed] });
+		return send(message, 'Adding!');
 	}
 
-	@RequiresGuildContext((message: Message) => send(message, 'This sub-command can only be used in servers'))
 	public async messageRemove(message: Message) {
 		return send(message, 'Removing!');
 	}
 
-	@RequiresDMContext((message: Message) => send(message, 'This sub-command can only be used in DMs'))
 	public async messageReset(message: Message) {
 		return send(message, 'Resetting!');
 	}
 }
+```

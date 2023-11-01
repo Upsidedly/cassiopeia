@@ -1,3 +1,4 @@
+```ts
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, type Args } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
@@ -73,3 +74,4 @@ export class UserCommand extends Command {
 		return { result, success, type };
 	}
 }
+```

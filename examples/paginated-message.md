@@ -1,3 +1,4 @@
+```ts
 import { ApplyOptions } from '@sapphire/decorators';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { Command } from '@sapphire/framework';
@@ -37,3 +38,4 @@ export class UserCommand extends Command {
 		return response;
 	}
 }
+```
